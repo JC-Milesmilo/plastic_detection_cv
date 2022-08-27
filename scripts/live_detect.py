@@ -1,30 +1,35 @@
 import numpy as np
 import cv2
 import torch
+import os
 import numpy as np
 
-#Vamos a capturar el objeto que queremos identificar
-model = torch.hub.load('ultralytics/yolov5','custom', 
-                    path='C:\\Users\\jca7x\\Desktop\\DMU_FinalPorj\\plastic_detection\\model\\bestExp11_SELECTED_1.pt')
 
-cap = cv2.VideoCapture(0)
+class live_detect():
 
-while True:
-    ret, fram = cap.read()
-    #detection
-    detect = model(fram)
+    def __init__(self,best_pt):
+        self.model = torch.hub.load('ultralytics/yolov5','custom', 
+                    path= f'{os.getcwd()}\\model\\{best_pt}')
+        return
 
-    info = detect.pandas().xyxy[0]
-    print(info)
+    def live(self):
+        cap = cv2.VideoCapture(0)
+        while True:
+            ret, fram = cap.read()
+            #detection
+            detect = self.model(fram)
 
-    #mostrar fps
-    cv2.imshow('Plastic detect',np.squeeze(detect.render()))
+            info = detect.pandas().xyxy[0]
+            print(info)
 
-    #leer teclado
-    t = cv2.waitKey(5)
+            #mostrar fps
+            cv2.imshow('Plastic detect',np.squeeze(detect.render()))
 
-    if t == 27:
-        break
+            #leer teclado
+            t = cv2.waitKey(5)
 
-cap.release()
-cv2.destroyAllWindows()
+            if t == 27:
+                break
+
+        cap.release()
+        cv2.destroyAllWindows()

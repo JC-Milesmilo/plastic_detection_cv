@@ -41,7 +41,7 @@ class ObjectDetection:
         """
         #model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
         model = torch.hub.load('ultralytics/yolov5','custom', 
-                    path='C:\\Users\\jca7x\\Desktop\\DMU_FinalPorj\\plastic_detection\\model\\bestExp11_SELECTED_1.pt')
+                    path='C:\\Users\\jca7x\\Desktop\\DMU_FinalPorj\\plastic_detection_cv\\model\\bestExp11_SELECTED_1.pt')
         return model
 
 
