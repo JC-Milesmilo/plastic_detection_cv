@@ -1,11 +1,11 @@
 from scripts.image_detect import model
-from scripts.heatmap import heatmap
+from scripts.mapbox import heatmap, mapbox
 
 def main():
     print("--Plastic project--")
 
     new_model = model(best_pt = 'Exp11.pt')
-    new_heatmap = heatmap()
+    new_heatmap = mapbox()
     
     df_result = new_model.result_model()
 
