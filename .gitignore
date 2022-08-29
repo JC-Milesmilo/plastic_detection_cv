@@ -133,3 +133,5 @@ try.py
 
 models_not_used/
 model/
+resources/
+.vscode
