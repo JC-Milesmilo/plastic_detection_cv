@@ -13,7 +13,7 @@ class mapbox():
     
     def get_map(self,df):
         fig = px.density_mapbox(df, lat='latitude', lon='longitude', z='count',
-                        mapbox_style="stamen-terrain",radius=5)
+                        mapbox_style="stamen-terrain",radius=15)
 
         fig.show()
 
